@@ -18,13 +18,13 @@ public class SecurityImpl implements Security {
         System.out.println(user.getUsername() + " est connecté !");
         // anyMatch dès qu'il trouve un critere valid …
         if(user.getAuthorities().stream().anyMatch(role -> role.getAuthority().compareTo("Admin") == 0) ){
-            return "redirect:/admin/liste-client";
+            return "redirect:/api/clients";
         }
 
         if(user.getAuthorities().stream().anyMatch(role -> role.getAuthority().compareTo("Client") == 0) ){
             //recuperer le user
             AppUser usr = securityService.getUser(user.getUsername());
-            return "redirect:/client/liste-commande?id="+ usr.getId();
+            return "redirect:/api/commandes"+ usr.getId();
         }
         return "redirect:/login";
         // return "Security/login";

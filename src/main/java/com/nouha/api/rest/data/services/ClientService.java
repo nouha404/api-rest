@@ -12,6 +12,6 @@ public interface ClientService {
     Page<Client> getClientsWithPaginateAndFilter(Pageable pageable,String telephone);
     List<Client> getClientById(Long id);
 
-    void addClient(CreateClientRequestDto dto);
+    CreateClientRequestDto addClient(CreateClientRequestDto dto);
 
 }

@@ -22,8 +22,6 @@ public class CreateClientRequestDto {
     //@Size(min = 9, message = "Le telephone doit avoir au minimum 9 chiffres ")
     @Pattern(regexp = "[0-9]{9}", message = "Le Telephone doit avoir 9 chiffres")
     private String telephone;
-
-    private String adresse;
     @NotBlank(message = "Le quartier est obligatoire")
     private String quartier;
     @NotBlank(message = "Le numero villa est obligatoire")
@@ -38,5 +36,18 @@ public class CreateClientRequestDto {
                 .telephone(telephone)
                 .adresse(new Adresse(quartier,ville,numVilla))
                 .build();
+    }
+
+    public static CreateClientRequestDto toDto(Client client){
+        return CreateClientRequestDto.builder()
+                .id(client.getId())
+                .nomComplet(client.getNomComplet())
+                .telephone(client.getTelephone())
+                .quartier(client.getAdresse().getQuartier())
+                .numVilla(client.getAdresse().getNumVilla())
+                .ville(client.getAdresse().getVille())
+
+                .build();
+
     }
 }

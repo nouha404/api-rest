@@ -1,11 +1,11 @@
 package com.nouha.api.rest.controllers;
 
 import com.nouha.api.rest.controllers.dto.request.CreateClientRequestDto;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Map;
 
@@ -13,7 +13,9 @@ import java.util.Map;
 public interface ClientRestController {
 
     @GetMapping("/clients")
-    ResponseEntity<Map<Object,Object>> listerClient(
+    //pas obligé de mettre un type de retour Map<Object,Object>
+
+    ResponseEntity<?> listerClient(
                         @RequestParam(defaultValue = "0",name = "page") int page,
                         @RequestParam(defaultValue = "8",name = "size") int size,
                         @RequestParam(defaultValue = "",name = "telephone") String telephone
@@ -21,6 +23,7 @@ public interface ClientRestController {
 
 
     @PostMapping("/clients")
-    ResponseEntity<Map<Object,Object>> saveClient(@RequestBody  CreateClientRequestDto clientDto);
+    ResponseEntity<?> saveClient(@Valid @RequestBody  CreateClientRequestDto clientDto,
+                                 BindingResult bindingResult);
 
 }

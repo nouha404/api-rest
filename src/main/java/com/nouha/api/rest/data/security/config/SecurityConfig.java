@@ -37,7 +37,6 @@ public class SecurityConfig {
         // http contient la requete
         return http.csrf(AbstractHttpConfigurer::disable)
 
-            // le template de base
             .formLogin(AbstractAuthenticationFilterConfigurer::permitAll
             ).authorizeHttpRequests( auth -> auth
                     .requestMatchers("/api/**").permitAll()
