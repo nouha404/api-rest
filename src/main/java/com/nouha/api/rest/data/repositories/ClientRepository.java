@@ -11,6 +11,7 @@ import java.util.List;
 public interface ClientRepository extends JpaRepository<Client,Long> {
     Page<Client> findAllByActiveTrue(Pageable pageable);
     Page<Client> findAllByTelephoneContainsAndActiveTrue(Pageable pageable,String telephone);
+    Client findClientByTelephoneAndActiveTrue(String tel);
 
     //Pour le test dans la console
     List<Client> findAllByActiveTrue();

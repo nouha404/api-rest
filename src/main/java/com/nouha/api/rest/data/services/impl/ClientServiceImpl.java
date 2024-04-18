@@ -52,8 +52,10 @@ public class ClientServiceImpl implements ClientService {
         return CreateClientRequestDto.toDto(transformToEntity); // le convertir en dto
     }
 
-
-
+    @Override
+    public Client getClientByTelephone(String tel) {
+        return clientRepository.findClientByTelephoneAndActiveTrue(tel);
+    }
 
 
 }

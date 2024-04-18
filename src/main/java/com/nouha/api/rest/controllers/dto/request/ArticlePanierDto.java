@@ -1,5 +1,6 @@
 package com.nouha.api.rest.controllers.dto.request;
 
+import com.nouha.api.rest.data.entities.Article;
 import lombok.*;
 
 import java.util.Objects;
@@ -43,5 +44,15 @@ public class ArticlePanierDto {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public static ArticlePanierDto toDto(Article article) {
+        return ArticlePanierDto
+                .builder()
+                .id(article.getId())
+                .libelle(article.getLibelle())
+                .quantite(article.getQteStock())
+                .prix(article.getNouveauPrix())
+                .build();
     }
 }

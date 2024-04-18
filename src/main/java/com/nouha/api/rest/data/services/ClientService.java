@@ -14,4 +14,6 @@ public interface ClientService {
 
     CreateClientRequestDto addClient(CreateClientRequestDto dto);
 
+    Client getClientByTelephone(String tel);
+
 }

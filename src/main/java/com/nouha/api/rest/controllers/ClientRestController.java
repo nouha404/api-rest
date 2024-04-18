@@ -26,4 +26,11 @@ public interface ClientRestController {
     ResponseEntity<?> saveClient(@Valid @RequestBody  CreateClientRequestDto clientDto,
                                  BindingResult bindingResult);
 
+    @GetMapping("/clients/telephone/{telephone}")
+    ResponseEntity<?> listerClientParTelephone(
+            @PathVariable String telephone
+
+    );
+
+
 }

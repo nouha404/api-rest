@@ -79,4 +79,17 @@ public class ClientRestControllerImpl implements ClientRestController {
         }
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Map<Object,Object>> listerClientParTelephone(String telephone) {
+        Client client = clientService.getClientByTelephone(telephone);
+        Map<Object, Object> response;
+        if (client==null){
+            response=RestResponseDto.response(null,HttpStatus.NO_CONTENT);
+        } else {
+            response = RestResponseDto.response(ClientShowEntityResponseDto.toDto(client),HttpStatus.CREATED);
+        }
+
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    }
 }
