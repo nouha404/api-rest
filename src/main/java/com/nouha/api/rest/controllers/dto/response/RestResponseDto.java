@@ -26,7 +26,7 @@ public class RestResponseDto {
 
         response.put("totalItems",totalItems);
         response.put("totalPages",totalPages);
-        response.put("status", status.value());
+        response.put("statuts", status.value());
 
         return response;
     }
@@ -36,7 +36,7 @@ public class RestResponseDto {
             HttpStatus status
     ){
         Map<Object,Object> response = new HashMap<Object,Object>();
-        response.put("status", status.value());
+        response.put("statuts", status.value());
         response.put("results",results);
 
 
