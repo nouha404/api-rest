@@ -2,6 +2,7 @@ package com.nouha.api.rest.controllers.impl;
 
 import com.nouha.api.rest.controllers.ArticleRestController;
 import com.nouha.api.rest.controllers.dto.request.ArticlePanierDto;
+import com.nouha.api.rest.controllers.dto.response.ArticleResponseDto;
 import com.nouha.api.rest.controllers.dto.response.ClientShowEntityResponseDto;
 import com.nouha.api.rest.controllers.dto.response.RestResponseDto;
 import com.nouha.api.rest.data.entities.Article;
@@ -13,14 +14,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/articles")
 public class ArticleRestControllerImpl implements ArticleRestController {
     private final ArticleService articleService;
+
+    @Override
+    public ResponseEntity<Map<Object,Object>> listerArticle() {
+        List<Article> articles = articleService.getArticlesFormComande();
+        List<ArticleResponseDto> list = articles.stream().map(ArticleResponseDto::toDto).toList();
+
+        return new ResponseEntity<>(RestResponseDto.response(list,HttpStatus.OK), HttpStatus.OK);
+    }
+
     @Override
     public ResponseEntity<Map<Object,Object>> listerArticleByLibelle(String libelle) {
 

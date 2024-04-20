@@ -21,6 +21,10 @@ public class SecurityImpl implements Security {
             return "redirect:/api/clients";
         }
 
+        /*if(user.getAuthorities().stream().anyMatch(role -> role.getAuthority().compareTo("Attache") == 0) ){
+            return "redirect:/api/articles";
+        }*/
+
         if(user.getAuthorities().stream().anyMatch(role -> role.getAuthority().compareTo("Client") == 0) ){
             //recuperer le user
             AppUser usr = securityService.getUser(user.getUsername());

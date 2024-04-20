@@ -22,7 +22,7 @@ public class ArticleFixtures implements CommandLineRunner {
     public void run(String... args) throws Exception {
         for (long i = 1L; i < 21L; i++) {
             Article article = new Article();
-            article.setLibelle("Article 00"+i);
+            article.setLibelle("Article00"+i);
             article.setAncienPrix(5+i+000.0+i);
             article.setPromo(i%2==0);
 

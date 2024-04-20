@@ -1,5 +1,6 @@
 package com.nouha.api.rest.controllers.impl;
 
+import ch.qos.logback.core.model.Model;
 import com.nouha.api.rest.controllers.CommandeRestController;
 import com.nouha.api.rest.controllers.dto.request.PanierDto;
 import com.nouha.api.rest.controllers.dto.response.CommandeShowEntityResponseDto;
@@ -74,7 +75,11 @@ public class CommandeRestControllerImpl implements CommandeRestController {
     }
 
     @Override
-    public ResponseEntity<Map<Object,Object> > saveCommande(PanierDto panier) {
-        return null;
+    public ResponseEntity<Map<Object, Object>> saveCommande(PanierDto panier) {
+        commandeService.saveCommande(panier);
+        //204
+        return new ResponseEntity<>(RestResponseDto.response(null,HttpStatus.NO_CONTENT), HttpStatus.OK);
     }
+
+
 }

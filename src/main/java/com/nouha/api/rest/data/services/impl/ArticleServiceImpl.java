@@ -23,4 +23,9 @@ public class ArticleServiceImpl implements ArticleService {
     public Article getArticleByLibelle(String libelle) {
         return articleRepository.findByLibelleAndActiveTrue(libelle);
     }
+
+    @Override
+    public List<Article> getArticlesFormComande() {
+        return articleRepository.findAllByActiveTrue();
+    }
 }

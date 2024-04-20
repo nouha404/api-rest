@@ -1,5 +1,6 @@
 package com.nouha.api.rest.controllers;
 
+import ch.qos.logback.core.model.Model;
 import com.nouha.api.rest.controllers.dto.request.PanierDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public interface CommandeRestController {
 
     @PostMapping("")
     ResponseEntity<Map<Object,Object>> saveCommande(
-            PanierDto panier
+            @RequestBody PanierDto panier
     );
 
 }

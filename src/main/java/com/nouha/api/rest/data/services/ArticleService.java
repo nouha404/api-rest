@@ -7,4 +7,5 @@ import java.util.List;
 public interface ArticleService {
     public List<Article> getArticlesFormCommande();
     public Article getArticleByLibelle(String libelle);
+    public List<Article> getArticlesFormComande();
 }

@@ -24,7 +24,7 @@ public class ClientFixtures implements CommandLineRunner {
         for (long i = 1L; i < 21L; i++) {
             Client client = new Client();
             client.setActive(i%2==0);
-            client.setNomComplet("Client "+i);
+            client.setNomComplet("Client"+i);
             if(i<10){
                 client.setTelephone("77123567"+i);
             } else {
